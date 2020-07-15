@@ -41,7 +41,9 @@
   <buildtool_depend>catkin</buildtool_depend>
 
   <depend>atlas</depend>
-  <depend>eigen</depend>
+
+  <depend>Eigen3</depend>
+
   <depend>gfortran</depend>
   <depend>libgflags-dev</depend>
   <depend>libgoogle-glog-dev</depend>

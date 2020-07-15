@@ -112,7 +112,7 @@ option(CUSTOM_BLAS
 # Ceres.  This will result in conflicts if the client code uses C++11.
 # Enabling this option forces the use of the C++11 versions (& -std=c++11) if
 # available.
-option(CXX11 "Enable use of C++11 headers if available (requires client code use C++11)." OFF)
+option(CXX11 "Enable use of C++11 headers if available (requires client code use C++11)." ON)
 # Multithreading using OpenMP
 cmake_dependent_option(
   OPENMP "Enable threaded solving in Ceres (requires OpenMP)" ON
@@ -127,12 +127,13 @@ cmake_dependent_option(
   "CXX11;NOT OPENMP;NOT TBB" OFF)
 # Enable the use of Eigen as a sparse linear algebra library for
 # solving the nonlinear least squares problems.
-option(EIGENSPARSE "Enable Eigen as a sparse linear algebra library." ON)
+option(EIGENSPARSE "Enable Eigen as a sparse linear algebra library." OFF)
+
 option(EXPORT_BUILD_DIR
   "Export build directory using CMake (enables external use without install)." OFF)
-option(BUILD_TESTING "Enable tests" ON)
+option(BUILD_TESTING "Enable tests" OFF)
 option(BUILD_DOCUMENTATION "Build User's Guide (html)" OFF)
-option(BUILD_EXAMPLES "Build examples" ON)
+option(BUILD_EXAMPLES "Build examples" OFF)
 cmake_dependent_option(
   BUILD_BENCHMARKS "Build Ceres benchmarking suite" ON "CXX11" OFF)
 option(BUILD_SHARED_LIBS "Build Ceres as a shared library." OFF)
@@ -211,7 +212,6 @@ unset(CERES_COMPILE_OPTIONS)
 # Eigen.
 find_package(Eigen REQUIRED)
 if (EIGEN_FOUND)
-  message("-- Found Eigen version ${EIGEN_VERSION}: ${EIGEN_INCLUDE_DIRS}")
   if (EIGEN_VERSION VERSION_LESS 3.1.0)
     message(FATAL_ERROR "-- Ceres requires Eigen version >= 3.1.0 in order "
       "that Eigen/SparseCore be available, detected version of Eigen is: "
