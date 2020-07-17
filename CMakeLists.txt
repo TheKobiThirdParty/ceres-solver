@@ -134,8 +134,9 @@ option(EXPORT_BUILD_DIR
 option(BUILD_TESTING "Enable tests" OFF)
 option(BUILD_DOCUMENTATION "Build User's Guide (html)" OFF)
 option(BUILD_EXAMPLES "Build examples" OFF)
-cmake_dependent_option(
-  BUILD_BENCHMARKS "Build Ceres benchmarking suite" ON "CXX11" OFF)
+option(BUILD_BENCHMARKS "Build Ceres benchmarking suite" OFF)
+# cmake_dependent_option(
+#   BUILD_BENCHMARKS "Build Ceres benchmarking suite" ON "CXX11" OFF)
 option(BUILD_SHARED_LIBS "Build Ceres as a shared library." OFF)
 if (MSVC)
   # MSVC has no analogue of -std=c++11, as all features available are on by
