@@ -93,16 +93,16 @@ enable_testing()
 include(CMakeDependentOption)
 option(MINIGLOG "Use a stripped down version of glog." OFF)
 option(GFLAGS "Enable Google Flags." ON)
-option(SUITESPARSE "Enable SuiteSparse." ON)
-option(CXSPARSE "Enable CXSparse." ON)
-option(LAPACK "Enable use of LAPACK directly within Ceres." ON)
+option(SUITESPARSE "Enable SuiteSparse." OFF)
+option(CXSPARSE "Enable CXSparse." OFF)
+option(LAPACK "Enable use of LAPACK directly within Ceres." OFF)
 # Template specializations for the Schur complement based solvers. If
 # compile time, binary size or compiler performance is an issue, you
 # may consider disabling this.
 option(SCHUR_SPECIALIZATIONS "Enable fixed-size schur specializations." ON)
 option(CUSTOM_BLAS
        "Use handcoded BLAS routines (usually faster) instead of Eigen."
-       ON)
+       OFF)
 # Ceres does not use C++11 internally, however it does use shared_ptr
 # (required) and unordered_map (if available), both of which were present in
 # previous iterations of what became C++11.  GCC & Clang can have both TR1 &
@@ -137,7 +137,7 @@ option(BUILD_EXAMPLES "Build examples" OFF)
 set(BUILD_BENCHMARKS OFF)
 # cmake_dependent_option(
 #   BUILD_BENCHMARKS "Build Ceres benchmarking suite" ON "CXX11" OFF)
-option(BUILD_SHARED_LIBS "Build Ceres as a shared library." OFF)
+option(BUILD_SHARED_LIBS "Build Ceres as a shared library." ON)
 if (MSVC)
   # MSVC has no analogue of -std=c++11, as all features available are on by
   # default. Enable CXX11 by default and disable if the required features
