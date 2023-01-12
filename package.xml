@@ -46,7 +46,7 @@
 
   <depend>gfortran</depend>
   <depend>libgflags-dev</depend>
-  <depend>libgoogle-glog-dev</depend>
+  <depend>libgoogle-glog</depend>
   <depend>suitesparse</depend>
 
   <export>
